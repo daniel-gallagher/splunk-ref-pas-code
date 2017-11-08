@@ -1,0 +1,100 @@
+<form script="customer_monitor.js"
+      stylesheet="help_hover.css, customer_monitor.css">
+    <label>Customer Monitor</label>
+    <search id="dendrogram_search">
+        <query>
+              tag=pas tag=change tag=audit customer_name=$customer$
+            | stats count by department department_group user
+        </query>
+    </search>
+    <fieldset submitButton="false" autoRun="true">
+        <input type="text" token="customer" searchWhenChanged="true">
+            <label>Enter customer name:</label>
+            <default>*</default>
+        </input>
+        <input type="time">
+            <label></label>
+            <default>
+                <earliest>-24h@h</earliest>
+                <latest>now</latest>
+            </default>
+        </input>
+    </fieldset>
+    <row>
+        <panel>
+          <single>
+            <title>Total events by User</title>
+            <search>
+              <query>tag=pas tag=change tag=audit customer_name=$customer$ | timechart count span=24h</query>
+            </search>
+            <option name="drilldown">none</option>
+            <option name="colorBy">value</option>
+            <option name="colorMode">none</option>
+            <option name="numberPrecision">0</option>
+            <option name="showSparkline">1</option>
+            <option name="showTrendIndicator">1</option>
+            <option name="trendColorInterpretation">standard</option>
+            <option name="trendDisplayMode">percent</option>
+            <option name="useColors">1</option>
+            <option name="useThousandSeparators">1</option>
+            <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
+            <option name="rangeValues">[0,30,70,100]</option>
+            <option name="trendInterval">-24h</option>
+          </single>
+        </panel>
+        <panel>
+          <single>
+            <title>Total number of departments involved</title>
+            <search>
+              <query>tag=pas tag=change tag=audit customer_name=$customer$ | timechart dc(department) span=24h</query>
+            </search>
+            <option name="drilldown">none</option>
+            <option name="colorBy">value</option>
+            <option name="colorMode">none</option>
+            <option name="numberPrecision">0</option>
+            <option name="showSparkline">1</option>
+            <option name="showTrendIndicator">1</option>
+            <option name="trendColorInterpretation">standard</option>
+            <option name="trendDisplayMode">percent</option>
+            <option name="useColors">1</option>
+            <option name="useThousandSeparators">1</option>
+            <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
+            <option name="rangeValues">[0,30,70,100]</option>
+            <option name="trendInterval">-24h</option>
+          </single>
+        </panel>
+        <panel>
+          <single>
+            <title>Total number of users involved</title>
+            <search>
+              <query>tag=pas tag=change tag=audit customer_name=$customer$ | timechart dc(user) span=24h</query>
+            </search>
+            <option name="drilldown">none</option>
+            <option name="colorBy">value</option>
+            <option name="colorMode">none</option>
+            <option name="numberPrecision">0</option>
+            <option name="showSparkline">1</option>
+            <option name="showTrendIndicator">1</option>
+            <option name="trendColorInterpretation">standard</option>
+            <option name="trendDisplayMode">percent</option>
+            <option name="useColors">1</option>
+            <option name="useThousandSeparators">1</option>
+            <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
+            <option name="rangeValues">[0,30,70,100]</option>
+            <option name="trendInterval">-24h</option>
+          </single>
+        </panel>
+    </row>
+    <row>
+        <panel>
+            <html>
+                <h2>Breakdown by departments and users interacting with PII documents pertaining to the customer(s):</h2>
+                <div id="dendrogram"></div>
+                <div class="help-hover" title="The dendrogram is a custom visualization from the D3 library wrapped into a Splunk view. CLICK TO LEARN MORE."> 
+                    <a class="external" target="_blank" href="http://dev.splunk.com/goto/d3sample1"><i class="icon-bulb"></i>
+                        Learn more about wraping a d3 control in a SimleXML view</a>
+                </div>
+            </html>
+        </panel>
+    </row>
+</form>

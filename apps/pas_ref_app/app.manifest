@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "1.0.0", 
+  "info": {
+    "title": "Splunk Reference App - PAS", 
+    "id": {
+      "group": null,
+      "name": "pas_ref_app", 
+      "version": "1.5.2"
+    }, 
+    "author": [
+      {
+        "name": "Splunk", 
+        "email": null, 
+        "company": "Splunk"
+      }
+    ], 
+    "releaseDate": null, 
+    "description": "Splunk Reference App - PAS, including the main app and the underlying add-ons.", 
+    "classification": {
+      "intendedAudience": "Developers", 
+      "categories": [], 
+      "developmentStatus": "Code Sample"
+    }, 
+    "commonInformationModels": {"Change Analysis": "4.5.0"}, 
+    "license": {
+      "name": "Apache-2.0", 
+      "text": null, 
+      "uri": "https://spdx.org/licenses/Apache-2.0.html#licenseText"
+    }, 
+    "privacyPolicy": {
+      "name": null, 
+      "text": null, 
+      "uri": null
+    }, 
+    "releaseNotes": {
+      "name": null, 
+      "text": null, 
+      "uri": null
+    }
+  }, 
+  "dependencies": {
+	"pas_hr_info": {
+		  "version": "1.5.2",
+		  "package": "pas_hr_info-1.5.2.tar.gz"
+	},
+    "pas_simulated_application_addon": {
+		  "version": "1.5.2",
+		  "package": "pas_simulated_application_addon-1.5.2.tar.gz"
+	  },
+    "pas_simulated_database_addon": {
+		  "version": "1.5.2",
+		  "package": "pas_simulated_database_addon-1.5.2.tar.gz"
+	  },
+    "pas_simulated_files_addon": {
+		  "version": "1.5.2",
+		  "package": "pas_simulated_files_addon-1.5.2.tar.gz"
+	  },
+    "pas_simulated_keycard_addon": {
+		  "version": "1.5.2",
+		  "package": "pas_simulated_keycard_addon-1.5.2.tar.gz"
+	  }
+  }, 
+  "tasks": null, 
+  "inputGroups": null, 
+  "incompatibleApps": null, 
+  "platformRequirements": null
+}
